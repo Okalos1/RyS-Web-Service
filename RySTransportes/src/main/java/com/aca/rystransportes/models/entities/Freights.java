@@ -1,21 +1,35 @@
 package com.aca.rystransportes.models.entities;
 
+import ch.qos.logback.core.net.server.Client;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "freights")
-public class Freights
-{
+public class Freights implements Serializable{
 
+    private static final long serialVersionUID =1L;
     //TODO: create freights foreign key from client
     //TODO: create freights foreign key from units
     //TODO: established One to Many connection to EmployeeFreight
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idfreight")
     Integer idFreight;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @JoinColumns({@JoinColumn(name = "idclient", referencedColumnName = "idclient")})
+    Client clients;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @JoinColumns({@JoinColumn(name ="unit", referencedColumnName = "plate")})
+    Units units;
 
     Date date;
 

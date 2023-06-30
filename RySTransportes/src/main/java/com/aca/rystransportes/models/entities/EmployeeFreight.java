@@ -1,10 +1,13 @@
 package com.aca.rystransportes.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.io.Serializable;
 
 @Entity
 @Table(name = "employeefreight")
-public class EmployeeFreight {
+public class EmployeeFreight implements Serializable{
 
     @Id
     @Column(name = "idemployeefreight")
@@ -14,8 +17,16 @@ public class EmployeeFreight {
     @JoinColumn(name = "id_user", referencedColumnName = "dui")
     User user;
 
-    //@ManyToOne
-    //Freight freight;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
+    @JoinColumns({@JoinColumn(name = "freightDate", referencedColumnName = "date")})
+    Freights freightsdate;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JsonIgnore
+    @JoinColumns({@JoinColumn(name = "freight", referencedColumnName = "idfreight")})
+    Freights freightsid;
+
 
     String position;
 
