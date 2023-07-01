@@ -21,12 +21,12 @@ public class Freights implements Serializable{
     @Column(name = "idfreight")
     Integer idFreight;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     @JoinColumns({@JoinColumn(name = "idclient", referencedColumnName = "idclient")})
     Client clients;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     @JoinColumns({@JoinColumn(name ="unit", referencedColumnName = "plate")})
     Units units;
