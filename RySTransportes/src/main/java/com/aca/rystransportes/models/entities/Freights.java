@@ -12,12 +12,8 @@ import java.util.Date;
 public class Freights implements Serializable{
 
     private static final long serialVersionUID =1L;
-    //TODO: create freights foreign key from client
-    //TODO: create freights foreign key from units
-    //TODO: established One to Many connection to EmployeeFreight
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idfreight")
     Integer idFreight;
 
@@ -46,6 +42,14 @@ public class Freights implements Serializable{
     String shipment;
 
     String comments;
+
+    public Integer getIdFreight() {
+        return idFreight;
+    }
+
+    public void setIdFreight(Integer idFreight){
+
+    }
 
     public Date getDate() {
         return date;
