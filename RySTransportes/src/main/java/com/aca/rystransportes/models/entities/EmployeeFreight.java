@@ -22,7 +22,7 @@ public class EmployeeFreight implements Serializable{
     @JoinColumns({@JoinColumn(name = "freightDate", referencedColumnName = "date")})
     Freights freightsdate;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     @JsonIgnore
     @JoinColumns({@JoinColumn(name = "freight", referencedColumnName = "idfreight")})
     Freights freightsid;

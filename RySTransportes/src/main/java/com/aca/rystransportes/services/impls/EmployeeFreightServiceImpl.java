@@ -5,10 +5,12 @@ import com.aca.rystransportes.repositories.EmployeeFreightRepository;
 import com.aca.rystransportes.services.EmployeeFreightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+@Service
 public class EmployeeFreightServiceImpl implements EmployeeFreightService {
 
     @Autowired

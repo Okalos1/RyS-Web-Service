@@ -1,6 +1,5 @@
 package com.aca.rystransportes.models.entities;
 
-import ch.qos.logback.core.net.server.Client;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -20,7 +19,7 @@ public class Freights implements Serializable{
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     @JoinColumns({@JoinColumn(name = "idclient", referencedColumnName = "idclient")})
-    Client clients;
+    Clients clients;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
@@ -32,8 +31,6 @@ public class Freights implements Serializable{
     String client;
 
     String tonage;
-
-    String unit;
 
     String destination;
 
@@ -75,13 +72,6 @@ public class Freights implements Serializable{
         this.tonage = tonage;
     }
 
-    public String getUnit() {
-        return unit;
-    }
-
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
 
     public String getDestination() {
         return destination;
