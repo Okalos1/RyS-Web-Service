@@ -1,6 +1,7 @@
 package com.aca.rystransportes.services;
 
 import com.aca.rystransportes.models.dtos.FreightsDTO;
+import com.aca.rystransportes.models.dtos.PageableDTO;
 import com.aca.rystransportes.models.entities.Freights;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,8 @@ public interface FreightsService {
     public Freights getFreightsById(Integer id);
 
     public List<Freights> getAllFreights();
+    
+    public List<Freights> getAllFreightsPageable(PageableDTO info);
 
     public void createFreights(FreightsDTO freights)  throws Exception;
 

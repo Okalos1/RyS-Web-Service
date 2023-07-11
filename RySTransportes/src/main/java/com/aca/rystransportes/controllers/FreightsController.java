@@ -1,6 +1,7 @@
 package com.aca.rystransportes.controllers;
 
 import com.aca.rystransportes.models.dtos.MessageDTO;
+import com.aca.rystransportes.models.dtos.PageableDTO;
 import com.aca.rystransportes.models.dtos.FreightsDTO;
 import com.aca.rystransportes.models.entities.Freights;
 import com.aca.rystransportes.services.impls.FreightsServiceImpl;
@@ -27,6 +28,33 @@ public class FreightsController {
     public List<Freights> showFreights(){
         return freightsService.getAllFreights();
     }
+    
+    @GetMapping("/pageable")
+	public ResponseEntity<?> findAllBooks(@Valid PageableDTO info, BindingResult result) {			
+		 if(result.hasErrors()) {
+		        return new ResponseEntity<>(
+		            null,
+		            HttpStatus.BAD_REQUEST
+		        );
+		    }
+		    
+		    try {
+		        //User userAuth = userService.getUserAuthenticated();
+		        //System.out.println(userAuth.getName());
+		    	
+		        List<Freights> freights = freightsService.getAllFreightsPageable(info);
+		        
+		        return new ResponseEntity<>(
+		            freights,
+		            HttpStatus.OK
+		        );
+		    } catch (Exception e) {
+		        return new ResponseEntity<>(
+		        		new MessageDTO("Error interno de servidor" + e.getMessage()),
+		            HttpStatus.INTERNAL_SERVER_ERROR
+		        );
+		    }
+	}
 
     @GetMapping("/id")
     public Freights getFreights(@PathVariable Integer id){

@@ -1,15 +1,19 @@
 package com.aca.rystransportes.services.impls;
 
 import com.aca.rystransportes.models.dtos.FreightsDTO;
+import com.aca.rystransportes.models.dtos.PageableDTO;
 import com.aca.rystransportes.models.entities.Clients;
 import com.aca.rystransportes.models.entities.Freights;
 import com.aca.rystransportes.models.entities.Units;
 import com.aca.rystransportes.repositories.FreightsRepository;
+import com.aca.rystransportes.repositories.FreightsRepositoryPageable;
 import com.aca.rystransportes.services.ClientsService;
 import com.aca.rystransportes.services.FreightsService;
 import com.aca.rystransportes.services.UnitsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -21,6 +25,9 @@ public class FreightsServiceImpl implements FreightsService {
 
     @Autowired
     FreightsRepository freightsRepository;
+    
+    @Autowired
+    FreightsRepositoryPageable freightsRepositoryPageable;
     
     @Autowired
 	private ClientsService clientService;
@@ -87,4 +94,14 @@ public class FreightsServiceImpl implements FreightsService {
     public void deleteFreights(Integer id) {
         freightsRepository.deleteById(id);
     }
+
+	@Override
+	public List<Freights> getAllFreightsPageable(PageableDTO info) {
+		PageRequest request = PageRequest
+				.of(info.getPage(), info.getLimit());
+		
+		return freightsRepositoryPageable
+				.findAll(request)
+				.toList();
+	}
 }
