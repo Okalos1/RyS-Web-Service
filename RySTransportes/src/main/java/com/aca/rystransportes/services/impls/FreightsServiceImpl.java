@@ -42,7 +42,7 @@ public class FreightsServiceImpl implements FreightsService {
 
     @Override
     public List<Freights> getAllFreights() {
-        return freightsRepository.findAll();
+        return freightsRepository.findAllByOrderByDateDesc();
     }
 
     @Override

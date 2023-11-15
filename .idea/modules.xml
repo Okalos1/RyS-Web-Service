@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/RyS-Web-Service.iml" filepath="$PROJECT_DIR$/.idea/RyS-Web-Service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/RySTransportes/RySTransportes.iml" filepath="$PROJECT_DIR$/RySTransportes/RySTransportes.iml" />
     </modules>
   </component>
 </project>
