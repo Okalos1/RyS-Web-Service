@@ -19,8 +19,8 @@ public class Freights implements Serializable{
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "freights_idfreight_seq")
     Integer idFreight;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idclient", referencedColumnName = "idclient", nullable = true)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "client", referencedColumnName = "idClient", nullable = true)
     Clients clients;
 
     @ManyToOne(fetch = FetchType.LAZY)
