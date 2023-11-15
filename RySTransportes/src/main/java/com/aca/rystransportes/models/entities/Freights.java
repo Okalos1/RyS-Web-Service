@@ -23,8 +23,7 @@ public class Freights implements Serializable{
     @JoinColumn(name = "client", referencedColumnName = "idClient", nullable = true)
     Clients clients;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name ="unit", referencedColumnName = "plate", nullable = true)
     Units units;
 
