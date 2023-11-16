@@ -1,6 +1,7 @@
 package com.aca.rystransportes.models.dtos;
 
 import com.aca.rystransportes.models.entities.Freights;
+import com.aca.rystransportes.models.entities.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotBlank;
 
@@ -9,7 +10,7 @@ import java.util.Date;
 public class EmpFreightInfo {
 
     @NotBlank
-    private Freights freight;
+    private Integer freight;
 
     @NotBlank
     private String position;
@@ -25,6 +26,9 @@ public class EmpFreightInfo {
 
     @NotBlank
     private Date freightdate;
+    
+    @NotBlank
+    private String user;
 
     //Constructors
 
@@ -32,65 +36,75 @@ public class EmpFreightInfo {
         super();
     }
 
-    public EmpFreightInfo(Freights freight, String position,
-                          float payment, float viatic, float extraPayment,
-                          Date freightdate) {
-        super();
-        this.freight = freight;
-        this.position = position;
-        this.payment = payment;
-        this.viatic = viatic;
-        this.extraPayment = extraPayment;
-        this.freightdate = freightdate;
-    }
+	public EmpFreightInfo(@NotBlank Integer freight, @NotBlank String position, @NotBlank float payment,
+			@NotBlank float viatic, @NotBlank float extraPayment, @NotBlank Date freightdate, @NotBlank String user) {
+		super();
+		this.freight = freight;
+		this.position = position;
+		this.payment = payment;
+		this.viatic = viatic;
+		this.extraPayment = extraPayment;
+		this.freightdate = freightdate;
+		this.user = user;
+	}
 
-    //Getters and setters
 
-    public Freights getFreight() {
-        return freight;
-    }
 
-    public void setFreight(Freights freight) {
-        this.freight = freight;
-    }
+	public Integer getFreight() {
+		return freight;
+	}
 
-    public String getPosition() {
-        return position;
-    }
+	public void setFreight(Integer freight) {
+		this.freight = freight;
+	}
 
-    public void setPosition(String position) {
-        this.position = position;
-    }
+	public String getPosition() {
+		return position;
+	}
 
-    public float getPayment() {
-        return payment;
-    }
+	public void setPosition(String position) {
+		this.position = position;
+	}
 
-    public void setPayment(float payment) {
-        this.payment = payment;
-    }
+	public float getPayment() {
+		return payment;
+	}
 
-    public float getViatic() {
-        return viatic;
-    }
+	public void setPayment(float payment) {
+		this.payment = payment;
+	}
 
-    public void setViatic(float viatic) {
-        this.viatic = viatic;
-    }
+	public float getViatic() {
+		return viatic;
+	}
 
-    public float getExtraPayment() {
-        return extraPayment;
-    }
+	public void setViatic(float viatic) {
+		this.viatic = viatic;
+	}
 
-    public void setExtraPayment(float extraPayment) {
-        this.extraPayment = extraPayment;
-    }
+	public float getExtraPayment() {
+		return extraPayment;
+	}
 
-    public Date getFreightdate() {
-        return freightdate;
-    }
+	public void setExtraPayment(float extraPayment) {
+		this.extraPayment = extraPayment;
+	}
 
-    public void setFreightdate(Date freightdate) {
-        this.freightdate = freightdate;
-    }
+	public Date getFreightdate() {
+		return freightdate;
+	}
+
+	public void setFreightdate(Date freightdate) {
+		this.freightdate = freightdate;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+    
 }

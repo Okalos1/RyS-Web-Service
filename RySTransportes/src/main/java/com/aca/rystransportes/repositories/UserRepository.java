@@ -6,4 +6,5 @@ import com.aca.rystransportes.models.entities.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     User findOneByEmail(String email);
+    User findOneByDui(String dui);
 }

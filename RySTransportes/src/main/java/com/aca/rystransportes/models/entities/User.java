@@ -8,8 +8,12 @@ import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "users")
+@JsonIgnoreProperties(value = { "passsword" })
 public class User {
 
     @Id
@@ -19,6 +23,7 @@ public class User {
     @Column(name = "name")
     String name;
 
+    @JsonIgnore
     @Column(name = "password")
     String password;
 

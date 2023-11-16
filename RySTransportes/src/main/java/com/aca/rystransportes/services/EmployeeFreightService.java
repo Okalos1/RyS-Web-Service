@@ -15,7 +15,8 @@ import java.util.List;
 @Service
 public interface EmployeeFreightService {
     public List<EmployeeFreight> getAllEmployeeFreight();
-    public EmployeeFreight getEmployeeFreightById(Integer id);
+    public EmployeeFreight getEmployeeFreightById(Integer idFregith);
+    public List<EmployeeFreight> getAllEmployeeFreightByFreight(Integer idFreight);
 
     void createEmployeeFreight(EmpFreightInfo empFreightInfo) throws Exception;
     public void deleteEmployeeFreight(Integer id);

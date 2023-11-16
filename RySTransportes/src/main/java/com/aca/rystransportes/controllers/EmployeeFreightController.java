@@ -28,6 +28,12 @@ public class EmployeeFreightController {
     public EmployeeFreight getEmployeeFreight(@PathVariable Integer id) {
         return employeeFreightService.getEmployeeFreightById(id);
     }
+    
+    @GetMapping("/idFreight/{idFreight}")
+    public List<EmployeeFreight> getEmployeeFreightByFreight(@PathVariable Integer idFreight) {
+        return employeeFreightService.getAllEmployeeFreightByFreight(idFreight);
+    }
+
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping()
@@ -46,7 +52,7 @@ public class EmployeeFreightController {
             employeeFreightService.createEmployeeFreight(empFreightInfo);
 
             return new ResponseEntity<>(
-                    new MessageDTO("Usuario Registrado"),
+                    new MessageDTO("Usuario asignado a flete"),
                     HttpStatus.CREATED
             );
 

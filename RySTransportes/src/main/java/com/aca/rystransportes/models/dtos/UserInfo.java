@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Pattern;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class UserInfo {
 
     @NotBlank
@@ -12,7 +14,9 @@ public class UserInfo {
 
     @NotBlank
     private String name;
+    
     @NotBlank
+    @JsonIgnore
     private String password;
 
     @NotBlank

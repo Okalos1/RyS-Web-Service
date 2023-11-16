@@ -120,4 +120,9 @@ public class UserServiceImpl implements UserService {
             }
         });
     }
+
+	@Override
+	public User findOneById(String dui) throws Exception {
+		return userRepository.findOneByDui(dui);
+	}
 }
