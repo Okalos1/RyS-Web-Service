@@ -1,6 +1,6 @@
 FROM openjdk:17.0.1-jdk-slim
 VOLUME /tmp
-COPY target/*.jar app.jar
+COPY target/*.jar RySTransportes.jar
 ENTRYPOINT ["java","-jar","/RySTransportes.jar"]
 EXPOSE 8080
 
