@@ -24,7 +24,7 @@ public class UnitServiceImpl implements UnitsService {
 
     @Override
     public List<Units> getAllUnits() {
-        return unitsRepository.findAll();
+        return unitsRepository.findAllByOrderByPlateDesc();
     }
 
     @Override

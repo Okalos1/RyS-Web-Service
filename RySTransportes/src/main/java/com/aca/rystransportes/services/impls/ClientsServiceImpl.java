@@ -18,7 +18,7 @@ public class ClientsServiceImpl implements ClientsService {
     
     @Override
     public List<Clients> getAllClients() {
-        return clientsRepository.findAll();
+        return clientsRepository.findAllByOrderByName();
     }
 
     @Override
