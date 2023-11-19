@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.aca.rystransportes.models.dtos.UserInfo;
 import com.aca.rystransportes.models.entities.User;
 
 import java.util.List;
@@ -18,6 +20,25 @@ public class UserController {
     @GetMapping()
     public List<User> showUser() {
         return userService.getAllUser();
+    }
+    
+    @GetMapping("/me")
+    public ResponseEntity<User> CurrentUser(UserInfo userInfo) {
+		try {
+
+            User user = userService.getUserAuthenticated();
+
+            return new ResponseEntity<>(
+                    user,
+                    HttpStatus.OK
+            );
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(
+                    null,
+                    HttpStatus.INTERNAL_SERVER_ERROR
+            );
+        }
     }
 
     @GetMapping("/all")
