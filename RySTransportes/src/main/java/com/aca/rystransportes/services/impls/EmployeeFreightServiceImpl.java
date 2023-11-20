@@ -71,4 +71,9 @@ public class EmployeeFreightServiceImpl implements EmployeeFreightService {
 		Freights freight = freightsService.getFreightsById(idFreight);
 		return eFRepository.findAllByFreight(freight);
 	}
+
+	@Override
+	public List<EmployeeFreight> getAllEmployeeFreightByUser(User user) {
+		return eFRepository.findAllByUser(user);
+	}
 }

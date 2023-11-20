@@ -4,6 +4,8 @@ import com.aca.rystransportes.models.dtos.EmpFreightInfo;
 import com.aca.rystransportes.models.dtos.MessageDTO;
 import com.aca.rystransportes.models.entities.EmployeeFreight;
 import com.aca.rystransportes.models.entities.User;
+import com.aca.rystransportes.repositories.UserRepository;
+import com.aca.rystransportes.services.UserService;
 import com.aca.rystransportes.services.impls.EmployeeFreightServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/empfreight")
 public class EmployeeFreightController {
+	
+    @Autowired
+    UserService userService;
+    
     @Autowired
     EmployeeFreightServiceImpl employeeFreightService;
 
@@ -32,6 +38,18 @@ public class EmployeeFreightController {
     @GetMapping("/idFreight/{idFreight}")
     public List<EmployeeFreight> getEmployeeFreightByFreight(@PathVariable Integer idFreight) {
         return employeeFreightService.getAllEmployeeFreightByFreight(idFreight);
+    }
+    
+    @GetMapping("/me")
+    public List<EmployeeFreight> getEmployeeFreightByUser() {
+    	List<EmployeeFreight> freightsByUser;
+        try {
+        	freightsByUser = employeeFreightService.getAllEmployeeFreightByUser(userService.getUserAuthenticated());
+        	return freightsByUser;
+        } catch (Exception e) {
+        	freightsByUser = null;
+            return freightsByUser;
+        }
     }
 
 
