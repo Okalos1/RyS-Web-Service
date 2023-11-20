@@ -15,6 +15,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -45,6 +49,8 @@ public class UserServiceImpl implements UserService {
         User user = new User();
 
         String encryptedPassword = passEncoder.encode(userInfo.getPassword());
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        Date now = new Date();
 
         user.setDui(userInfo.getDui());
         user.setName(userInfo.getName());
@@ -52,7 +58,7 @@ public class UserServiceImpl implements UserService {
         user.setNit(userInfo.getNit());
         user.setRol(userInfo.getRol());
         user.setPhone(userInfo.getPhone());
-        user.setStartdate(userInfo.getStartdate());
+        user.setStartdate(now);
         user.setEmail(userInfo.getEmail());
         user.setAddress(userInfo.getAddress());
 
@@ -109,8 +115,9 @@ public class UserServiceImpl implements UserService {
         return userRepository.findOneByEmail(email);
     }
 
+    @Override
     @Transactional(rollbackOn = Exception.class)
-    private void cleanTokens(User user) {
+    public void cleanTokens(User user) {
         List<Token> tokens = tokenRepository.findByUserAndActive(user, true);
 
         tokens.forEach((userToken) -> {

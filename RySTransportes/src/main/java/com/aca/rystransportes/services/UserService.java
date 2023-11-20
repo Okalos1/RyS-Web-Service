@@ -17,4 +17,6 @@ public interface UserService {
     void insertToken(User user, String token) throws Exception;
     Boolean isTokenValid(User user, String token) throws Exception;
     User getUserAuthenticated() throws Exception;
+
+	void cleanTokens(User user);
 }

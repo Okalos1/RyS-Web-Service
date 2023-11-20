@@ -42,9 +42,15 @@ public class AuthController {
             }
 
             User foundUser = userService.findOneByEmail(userInfo.getEmail());
+            User foundUser2 = userService.findOneById(userInfo.getDui());
             if(foundUser != null) {
                 return new ResponseEntity<>(
-                        new MessageDTO("Este usuario ya existe"),
+                        new MessageDTO("Este correo electrónico ya existe"),
+                        HttpStatus.BAD_REQUEST
+                );
+            }if(foundUser2 != null) {
+            	return new ResponseEntity<>(
+                        new MessageDTO("Este DUI ya existe"),
                         HttpStatus.BAD_REQUEST
                 );
             }
@@ -96,6 +102,27 @@ public class AuthController {
             System.out.println(e.getMessage());
             return new ResponseEntity<>(
                     new TokenDTO(),
+                    HttpStatus.INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+    @GetMapping("/signout")
+    public ResponseEntity<MessageDTO> logoutUser() {
+    	try {
+    		       
+            User user = userService.getUserAuthenticated();
+            
+            userService.cleanTokens(user);
+
+            return new ResponseEntity<>(
+                    new MessageDTO("Token desactivado"),
+                    HttpStatus.OK
+            );
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>(
+                    new MessageDTO("Token no desactivado"),
                     HttpStatus.INTERNAL_SERVER_ERROR
             );
         }
