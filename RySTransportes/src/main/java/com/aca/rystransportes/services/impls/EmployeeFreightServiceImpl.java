@@ -49,7 +49,7 @@ public class EmployeeFreightServiceImpl implements EmployeeFreightService {
         empF.setPayment(employeeFreightInfo.getPayment());
         empF.setViatic(employeeFreightInfo.getViatic());
         empF.setExtraPayment(employeeFreightInfo.getExtraPayment());
-        empF.setFreightdate(employeeFreightInfo.getFreightdate());
+        empF.setFreightdate(freight.getDate());
         empF.setUser(user);
 
         eFRepository.save(empF);
