@@ -102,8 +102,22 @@ public class EmployeeFreightController {
     }
 
     @DeleteMapping(value = "{id}")
-    public @ResponseBody String deleteEmployeeFreight(@PathVariable("id")  Integer id ) {
-        employeeFreightService.deleteEmployeeFreight(id);
-        return null;
+    public ResponseEntity<MessageDTO> deleteEmployeeFreight(@PathVariable("id")  Integer id ) {
+
+        try {
+
+        	employeeFreightService.deleteEmployeeFreight(id);
+
+            return new ResponseEntity<>(
+                    new MessageDTO("Empleado eliminado de ruta"),
+                    HttpStatus.CREATED
+            );
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(
+                    new MessageDTO("Error interno, usuario no eliminado de ruta"),
+                    HttpStatus.INTERNAL_SERVER_ERROR
+            );
+        }
     }
 }

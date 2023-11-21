@@ -38,6 +38,7 @@ C:\Users\andre\Desktop\UCA\02 2023\PRÁCTICA PROFESIONAL 2\PROYECTO\BACKEND\RyS-W
 C:\Users\andre\Desktop\UCA\02 2023\PRÁCTICA PROFESIONAL 2\PROYECTO\BACKEND\RyS-Web-Service\RySTransportes\src\main\java\com\aca\rystransportes\repositories\TokenRepository.java
 C:\Users\andre\Desktop\UCA\02 2023\PRÁCTICA PROFESIONAL 2\PROYECTO\BACKEND\RyS-Web-Service\RySTransportes\src\main\java\com\aca\rystransportes\services\ClientsService.java
 C:\Users\andre\Desktop\UCA\02 2023\PRÁCTICA PROFESIONAL 2\PROYECTO\BACKEND\RyS-Web-Service\RySTransportes\src\main\java\com\aca\rystransportes\controllers\AuthController.java
+C:\Users\andre\Desktop\UCA\02 2023\PRÁCTICA PROFESIONAL 2\PROYECTO\BACKEND\RyS-Web-Service\RySTransportes\src\main\java\com\aca\rystransportes\repositories\EmployeeFreightRepositoryPageable.java
 C:\Users\andre\Desktop\UCA\02 2023\PRÁCTICA PROFESIONAL 2\PROYECTO\BACKEND\RyS-Web-Service\RySTransportes\src\main\java\com\aca\rystransportes\models\entities\Units.java
 C:\Users\andre\Desktop\UCA\02 2023\PRÁCTICA PROFESIONAL 2\PROYECTO\BACKEND\RyS-Web-Service\RySTransportes\src\main\java\com\aca\rystransportes\utils\TokenManager.java
 C:\Users\andre\Desktop\UCA\02 2023\PRÁCTICA PROFESIONAL 2\PROYECTO\BACKEND\RyS-Web-Service\RySTransportes\src\main\java\com\aca\rystransportes\models\dtos\LoginDTO.java
