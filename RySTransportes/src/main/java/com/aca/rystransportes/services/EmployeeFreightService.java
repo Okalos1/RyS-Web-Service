@@ -1,6 +1,7 @@
 package com.aca.rystransportes.services;
 
 import com.aca.rystransportes.models.dtos.EmpFreightInfo;
+import com.aca.rystransportes.models.dtos.PageableDTO;
 import com.aca.rystransportes.models.entities.EmployeeFreight;
 import com.aca.rystransportes.models.entities.EmployeeFreight;
 import com.aca.rystransportes.models.entities.Freights;
@@ -19,6 +20,7 @@ public interface EmployeeFreightService {
     public EmployeeFreight getEmployeeFreightById(Integer idFregith);
     public List<EmployeeFreight> getAllEmployeeFreightByFreight(Integer idFreight);
     public List<EmployeeFreight> getAllEmployeeFreightByUser(User user);
+    public List<EmployeeFreight> getAllFreightByUserPageable(PageableDTO info, User user);
 
     void createEmployeeFreight(EmpFreightInfo empFreightInfo) throws Exception;
     public void deleteEmployeeFreight(Integer id);

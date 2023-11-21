@@ -1,15 +1,18 @@
 package com.aca.rystransportes.services.impls;
 
 import com.aca.rystransportes.models.dtos.EmpFreightInfo;
+import com.aca.rystransportes.models.dtos.PageableDTO;
 import com.aca.rystransportes.models.entities.EmployeeFreight;
 import com.aca.rystransportes.models.entities.Freights;
 import com.aca.rystransportes.models.entities.User;
 import com.aca.rystransportes.repositories.EmployeeFreightRepository;
+import com.aca.rystransportes.repositories.EmployeeFreightRepositoryPageable;
 import com.aca.rystransportes.repositories.FreightsRepository;
 import com.aca.rystransportes.services.EmployeeFreightService;
 import com.aca.rystransportes.services.FreightsService;
 import com.aca.rystransportes.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -21,6 +24,9 @@ public class EmployeeFreightServiceImpl implements EmployeeFreightService {
 
     @Autowired
     EmployeeFreightRepository eFRepository;
+
+    @Autowired
+    EmployeeFreightRepositoryPageable eFRepositoryPageable;
 
     @Autowired
     private UserService userService;
@@ -76,4 +82,11 @@ public class EmployeeFreightServiceImpl implements EmployeeFreightService {
 	public List<EmployeeFreight> getAllEmployeeFreightByUser(User user) {
 		return eFRepository.findAllByUser(user);
 	}
+
+    @Override
+    public List<EmployeeFreight> getAllFreightByUserPageable(PageableDTO info, User user) {
+        PageRequest request = PageRequest
+                .of(info.getPage(), info.getLimit());
+        return eFRepositoryPageable.findAllByUser(request, user);
+    }
 }

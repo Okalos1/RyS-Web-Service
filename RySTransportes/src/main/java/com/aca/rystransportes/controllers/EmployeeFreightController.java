@@ -3,10 +3,12 @@ package com.aca.rystransportes.controllers;
 import com.aca.rystransportes.models.dtos.EmpFreightInfo;
 import com.aca.rystransportes.models.dtos.MessageDTO;
 import com.aca.rystransportes.models.entities.EmployeeFreight;
+import com.aca.rystransportes.models.dtos.PageableDTO;
 import com.aca.rystransportes.models.entities.User;
 import com.aca.rystransportes.repositories.UserRepository;
 import com.aca.rystransportes.services.UserService;
 import com.aca.rystransportes.services.impls.EmployeeFreightServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,6 +50,18 @@ public class EmployeeFreightController {
         	return freightsByUser;
         } catch (Exception e) {
         	freightsByUser = null;
+            return freightsByUser;
+        }
+    }
+
+    @GetMapping("/me/pageable")
+    public List<EmployeeFreight> getFreightByUserPageable(@Valid PageableDTO info) {
+        List<EmployeeFreight> freightsByUser;
+        try {
+            freightsByUser = employeeFreightService.getAllFreightByUserPageable(info, userService.getUserAuthenticated());
+            return freightsByUser;
+        } catch (Exception e) {
+            freightsByUser = null;
             return freightsByUser;
         }
     }
