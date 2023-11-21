@@ -87,6 +87,6 @@ public class EmployeeFreightServiceImpl implements EmployeeFreightService {
     public List<EmployeeFreight> getAllFreightByUserPageable(PageableDTO info, User user) {
         PageRequest request = PageRequest
                 .of(info.getPage(), info.getLimit());
-        return eFRepositoryPageable.findAllByUser(request, user);
+        return eFRepositoryPageable.findAllByUserOrderByFreightdateDescIdEmployeeFreightAsc(request, user);
     }
 }

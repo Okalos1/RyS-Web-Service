@@ -100,7 +100,7 @@ public class FreightsServiceImpl implements FreightsService {
 		PageRequest request = PageRequest
 				.of(info.getPage(), info.getLimit());
 		
-		return freightsRepositoryPageable.findAllByOrderByDateDesc(request);
+		return freightsRepositoryPageable.findAllByOrderByDateDescIdFreightAsc(request);
 				//.findAll(request)
 				//.toList();
 	}

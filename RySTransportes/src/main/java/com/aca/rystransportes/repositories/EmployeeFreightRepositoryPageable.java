@@ -10,6 +10,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import java.util.List;
 
 public interface EmployeeFreightRepositoryPageable extends PagingAndSortingRepository<EmployeeFreight, Integer> {
-	List<EmployeeFreight> findAllByUser(PageRequest info, User user);
+	List<EmployeeFreight> findAllByUserOrderByFreightdateDescIdEmployeeFreightAsc(PageRequest info, User user);
 	//findBy
 }
